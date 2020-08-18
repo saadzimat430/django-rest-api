@@ -4,7 +4,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
 
 
 class UserManager(BaseUserManager):
-
     # **extra_fields means we can have more fields in our function
     def create_user(self, email, password=None, **extra_fields):
         """ creates and saves a new user """
@@ -25,8 +24,8 @@ class UserManager(BaseUserManager):
 
         return user
 
-class User(AbstractBaseUser, PermissionsMixin):
 
+class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports email instead of username"""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
